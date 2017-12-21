@@ -8,12 +8,9 @@ namespace HerbalismRoler
     {
         public List<Ingredient> Ingredients;
 
-        public Ingredient GetIngredient(int v)
+        public virtual Ingredient GetIngredient(int v)
         {
             if (Ingredients[v].IsCommon)
-                throw new NotImplementedException();
-
-            if (Ingredients[v].Double)
                 throw new NotImplementedException();
 
             return Ingredients[v];

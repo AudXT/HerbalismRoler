@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Objects\CommonTable.cs" />
     <Compile Include="Objects\ArcticTable.cs" />
     <Compile Include="Objects\Ingredient.cs" />
     <Compile Include="Objects\Table.cs" />
