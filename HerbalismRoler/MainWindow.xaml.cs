@@ -23,18 +23,42 @@ namespace HerbalismRoler
     {
         public int Modifier;
         public int DC;
+        public int RollTimes;
+        public Table table;
 
         public MainWindow()
         {
             InitializeComponent();
-            Modifier = (int)ModifierNum.Value;
-            DC = Convert.ToInt32(DifNumber);
         }
 
         private void GenoratorButton_Click(object sender, RoutedEventArgs e)
         {
+            Modifier = (int)ModifierNum.Value;
+            DC = Convert.ToInt32(DifNumber.Value);
+            RollTimes = Convert.ToInt32(TimesRolledNumber.Value);
+
+            switch (EnviromentComboBox.Text)
+            {
+                case "Arctic":
+                    table = new ArcticTable();
+                    break;
+                case "Common":
+                    table = new CommonTable();
+                    break;
+                default:
+                    throw new NotImplementedException("Chosen Table has not yet been added");
+            }
+
             Genorator gen = new Genorator();
-            gen.rollTable(new ArcticTable(), Modifier, DC);
+
+
+
+            for (int i = 0; i < RollTimes; i++)
+            {
+                gen.rollTable(table, Modifier, DC);
+            }
+
+            GenoratedIngredients.Text = gen.getTable();
         }
     }
 }
