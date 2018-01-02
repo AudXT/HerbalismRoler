@@ -28,7 +28,8 @@
             <Label Name="Common" Content="Common" FontSize="11" />
         </ComboBox>
         <TextBox x:Name="RollMod" HorizontalAlignment="Left" Height="23" Margin="176,10,0,0" TextWrapping="Wrap" Text="Modifier:" VerticalAlignment="Top" Width="88" IsReadOnly="True" BorderThickness="0"/>
-        <xctk:IntegerUpDown x:Name="ModifierNum" Margin="269,10,0,0" HorizontalAlignment="Left" Width="53" Height="23" VerticalAlignment="Top" DefaultValue="0" DisplayDefaultValueOnEmptyText="True" Maximum="30" Minimum="0" IsManipulationEnabled="True" />
+        <xctk:IntegerUpDown x:Name="ModifierNum" Margin="237,10,0,0" HorizontalAlignment="Left" Width="53" Height="23" VerticalAlignment="Top" DefaultValue="0" DisplayDefaultValueOnEmptyText="True" Maximum="30" Minimum="0" IsManipulationEnabled="True" />
+        <TextBox x:Name="GenoratedIngredients" Margin="10,160,10,10" TextWrapping="Wrap" Text="" IsReadOnly="True" BorderThickness="0"/>
 
     </Grid>
 </Window>

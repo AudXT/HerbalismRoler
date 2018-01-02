@@ -11,7 +11,10 @@ namespace HerbalismRoler
         public virtual Ingredient GetIngredient(int v)
         {
             if (Ingredients[v].IsCommon)
-                throw new NotImplementedException();
+            {
+                CommonTable table = new CommonTable();
+                return table.GetIngredient(v);
+            }
 
             return Ingredients[v];
         }

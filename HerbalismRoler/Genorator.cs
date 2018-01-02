@@ -15,12 +15,14 @@ namespace HerbalismRoler
         {
             if (Roll(20) + mod > dc)
             {
-                for (int i = 0; i < Roll(4); i++)
+                int x = Roll(4);
+
+                for (int i = 0; i < x; i++)
                 {
                     if (Roll(100) < 75)
                     {
 
-                        var ingredient = table.GetIngredient(Roll(6, 2));
+                        var ingredient = table.GetIngredient((Roll(6, 2)) - 1);
 
                         IngredientsFound[ingredient.Name] += 1;
 
@@ -33,7 +35,26 @@ namespace HerbalismRoler
                     }
                 }
             }
+        }
 
+        public string getTable()
+        {
+            StringBuilder s = new StringBuilder();
+            
+            foreach(var n in IngredientsFound)
+            {
+                if(n.Value > 0)
+                {
+                    s.Append($"{n.Key}: {n.Value}, ");
+                }
+            }
+
+            if(s.Length < 1)
+            {
+                s.Append("None Found");
+            }
+
+            return s.ToString();
         }
 
         public int Roll(int diceSize, int diceAmount = 1)
@@ -43,8 +64,8 @@ namespace HerbalismRoler
 
             for (int i = 0; i < diceAmount; i++)
             {
-                result += random.Next(0, diceSize-1);
-                Thread.Sleep(1000);
+                result += random.Next(1, diceSize);
+                Thread.Sleep(100);
             }
 
             return result;
@@ -52,20 +73,23 @@ namespace HerbalismRoler
 
         public Genorator()
         {
-            IngredientsFound.Add("Enchanted Water", 0);
-            IngredientsFound.Add("Silver Hibiscus", 0);
-            IngredientsFound.Add("Mortflesh Powder", 0);
-            IngredientsFound.Add("Ironwood Heart", 0);
-            IngredientsFound.Add("Frozen Seedlings", 0);
+            IngredientsFound = new Dictionary<string, int>();
+
             IngredientsFound.Add("Arctic Creeper", 0);
+            IngredientsFound.Add("Bloodgrass", 0);
+            IngredientsFound.Add("Enchanted Water", 0);
             IngredientsFound.Add("Finnel Silk", 0);
             IngredientsFound.Add("Friend's Ivy", 0);
-            IngredientsFound.Add("Voidroot", 0);
+            IngredientsFound.Add("Frozen Seedlings", 0);
+            IngredientsFound.Add("Ironwood Heart", 0);
             IngredientsFound.Add("Mandrake Root", 0);
-            IngredientsFound.Add("Quicksilver Lichen", 0);
-            IngredientsFound.Add("Wild Sageroot", 0);
-            IngredientsFound.Add("Bloodgrass", 0);
             IngredientsFound.Add("Milkweed Seeds", 0);
+            IngredientsFound.Add("Mortflesh Powder", 0);
+            IngredientsFound.Add("Quicksilver Lichen", 0);
+            IngredientsFound.Add("Silver Hibiscus", 0);
+            IngredientsFound.Add("Voidroot", 0);
+            IngredientsFound.Add("Wild Sageroot", 0);
+            IngredientsFound.Add("Wyrmtoungue Petals", 0);
         }
     }
 }
