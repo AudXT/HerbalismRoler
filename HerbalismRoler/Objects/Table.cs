@@ -12,7 +12,7 @@ namespace HerbalismRoler
         {
             if (Ingredients[v].IsCommon)
             {
-                CommonTable table = new CommonTable();
+                TableCommon table = new TableCommon();
                 return table.GetIngredient(v);
             }
 

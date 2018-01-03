@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HerbalismRoler.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace HerbalismRoler
 {
     public class Genorator
     {
-        public Dictionary<String, int> IngredientsFound;
+        public Dictionary<IngredientName, Ingredient> IngredientsFound;
 
         public void rollTable(Table table, int mod, int dc)
         {
@@ -24,14 +25,17 @@ namespace HerbalismRoler
 
                         var ingredient = table.GetIngredient((Roll(6, 2)) - 1);
 
-                        IngredientsFound[ingredient.Name] += 1;
+                        IngredientsFound[ingredient.NameEnum].Number += 1;
 
                         if (ingredient.Double)
-                            IngredientsFound[ingredient.Name] += 1;
+                            IngredientsFound[ingredient.NameEnum].Number += 1;
+
+                        if (ingredient.ExtraWater)
+                            IngredientsFound[IngredientName.Elemental_Water].Number += 1;
                     }
                     else
                     {
-                        IngredientsFound["Enchanted Water"] += 1;
+                        IngredientsFound[IngredientName.Elemental_Water].Number += 1;
                     }
                 }
             }
@@ -43,9 +47,9 @@ namespace HerbalismRoler
             
             foreach(var n in IngredientsFound)
             {
-                if(n.Value > 0)
+                if(n.Value.Number > 0)
                 {
-                    s.Append($"{n.Key}: {n.Value}, ");
+                    s.Append($"{n.Value.Name}: {n.Value.Number}\n");
                 }
             }
 
@@ -53,6 +57,8 @@ namespace HerbalismRoler
             {
                 s.Append("None Found");
             }
+
+            s = s.Replace('_', ' ');
 
             return s.ToString();
         }
@@ -73,23 +79,13 @@ namespace HerbalismRoler
 
         public Genorator()
         {
-            IngredientsFound = new Dictionary<string, int>();
+            IngredientsFound = new Dictionary<IngredientName, Ingredient>();
 
-            IngredientsFound.Add("Arctic Creeper", 0);
-            IngredientsFound.Add("Bloodgrass", 0);
-            IngredientsFound.Add("Enchanted Water", 0);
-            IngredientsFound.Add("Finnel Silk", 0);
-            IngredientsFound.Add("Friend's Ivy", 0);
-            IngredientsFound.Add("Frozen Seedlings", 0);
-            IngredientsFound.Add("Ironwood Heart", 0);
-            IngredientsFound.Add("Mandrake Root", 0);
-            IngredientsFound.Add("Milkweed Seeds", 0);
-            IngredientsFound.Add("Mortflesh Powder", 0);
-            IngredientsFound.Add("Quicksilver Lichen", 0);
-            IngredientsFound.Add("Silver Hibiscus", 0);
-            IngredientsFound.Add("Voidroot", 0);
-            IngredientsFound.Add("Wild Sageroot", 0);
-            IngredientsFound.Add("Wyrmtoungue Petals", 0);
+            for (int i = 0; i < Enum.GetValues(typeof(IngredientName)).Length; i++)
+            {
+                IngredientName t = (IngredientName)i;
+                IngredientsFound.Add(t, new Ingredient() { Name = t.ToString() });
+            }
         }
     }
 }

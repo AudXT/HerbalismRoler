@@ -60,3 +60,7 @@ C:\_repos\Self work\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.cspro
 C:\_repos\Self work\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.csproj.CoreCompileInputs.cache
 C:\_repos\Self work\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.exe
 C:\_repos\Self work\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.pdb
+C:\Users\xpxuser\source\repos\HerbalismRoler\HerbalismRoler\bin\Debug\HerbalismRoler.exe.manifest
+C:\Users\xpxuser\source\repos\HerbalismRoler\HerbalismRoler\bin\Debug\HerbalismRoler.application
+C:\Users\xpxuser\source\repos\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.exe.manifest
+C:\Users\xpxuser\source\repos\HerbalismRoler\HerbalismRoler\obj\Debug\HerbalismRoler.application

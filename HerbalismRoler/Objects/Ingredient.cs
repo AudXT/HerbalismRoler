@@ -9,9 +9,12 @@ namespace HerbalismRoler.Objects
     public class Ingredient
     {
         public string Name;
+        public IngredientName NameEnum;
         public string Modifier;
         public int Roll;
         public bool Double = false;
         public bool IsCommon = false;
+        public bool ExtraWater = false;
+        public int Number = 0;
     }
 }

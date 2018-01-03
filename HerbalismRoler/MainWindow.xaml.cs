@@ -40,13 +40,37 @@ namespace HerbalismRoler
             switch (EnviromentComboBox.Text)
             {
                 case "Arctic":
-                    table = new ArcticTable();
+                    table = new TableArctic();
+                    break;
+                case "Costal/Underwater":
+                    table = new TableCostalUnderwater();
+                    break;
+                case "Desert":
+                    table = new TableDesert();
+                    break;
+                case "Forest":
+                    table = new TableForest();
+                    break;
+                case "Grassland":
+                    table = new TableGrasslands();
+                    break;
+                case "Hills":
+                    table = new TableHills();
+                    break;
+                case "Mountain":
+                    table = new TableMountains();
+                    break;
+                case "Swamp":
+                    table = new TableSwamp();
+                    break;
+                case "Underdark":
+                    table = new TableUnderdark();
                     break;
                 case "Common":
-                    table = new CommonTable();
+                    table = new TableCommon();
                     break;
                 default:
-                    throw new NotImplementedException("Chosen Table has not yet been added");
+                    throw new NotImplementedException($"{EnviromentComboBox.Text} functionality has not yet been added!");
             }
 
             Genorator gen = new Genorator();
